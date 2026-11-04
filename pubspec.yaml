@@ -38,7 +38,7 @@ dependencies:
   provider: ^6.1.2
   connectivity_plus: ^6.1.0
   http: ^1.2.2
-  nearby_connections: ^3.1.5
+  nearby_connections: ^4.3.0
   permission_handler: ^11.3.1
   flutter_map: ^8.3.2
   latlong2: ^0.10.1
