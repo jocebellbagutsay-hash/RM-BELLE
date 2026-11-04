@@ -6,7 +6,7 @@ import 'package:nearby_connections/nearby_connections.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ActivityMeshChatScreen extends StatefulWidget {
-  const ActivityMeshChatScreen({Key? key}) : super(key: key);
+  const ActivityMeshChatScreen({super.key});
 
   @override
   State<ActivityMeshChatScreen> createState() => _ActivityMeshChatScreenState();
@@ -256,7 +256,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
                   );
                 },
               );
-            }).toList(),
+            }),
           ],
           if (connectedDevices.isNotEmpty) ...[
             const Padding(
@@ -276,7 +276,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
                   },
                 ),
               );
-            }).toList(),
+            }),
           ]
         ],
       ),

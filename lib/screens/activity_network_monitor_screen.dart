@@ -124,14 +124,14 @@ class ActivityNetworkMonitorScreen extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: statusColor.withOpacity(0.35), width: 1.5),
+        side: BorderSide(color: statusColor.withValues(alpha: 0.35), width: 1.5),
       ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           gradient: LinearGradient(
             colors: [
-              statusColor.withOpacity(0.08),
+              statusColor.withValues(alpha: 0.08),
               Theme.of(context).cardColor,
             ],
             begin: Alignment.topLeft,
@@ -147,7 +147,7 @@ class ActivityNetworkMonitorScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.15),
+                    color: statusColor.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(statusIcon, color: statusColor, size: 36),
@@ -278,11 +278,11 @@ class ActivityNetworkMonitorScreen extends StatelessWidget {
   ) {
     return Card(
       elevation: 0,
-      color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.4),
+      color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
         side: BorderSide(
-          color: Theme.of(context).colorScheme.outlineVariant.withOpacity(0.5),
+          color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.5),
         ),
       ),
       child: Padding(
@@ -580,12 +580,12 @@ class ActivityNetworkMonitorScreen extends StatelessWidget {
         color: Theme.of(context)
             .colorScheme
             .surfaceContainerLow
-            .withOpacity(0.6),
+            .withValues(alpha: 0.6),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: item.isQueued
-              ? Colors.orange.withOpacity(0.5)
-              : Theme.of(context).colorScheme.outlineVariant.withOpacity(0.4),
+              ? Colors.orange.withValues(alpha: 0.5)
+              : Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.4),
         ),
       ),
       child: Column(
@@ -605,7 +605,7 @@ class ActivityNetworkMonitorScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 decoration: BoxDecoration(
-                  color: badgeColor.withOpacity(0.15),
+                  color: badgeColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
