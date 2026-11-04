@@ -41,6 +41,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
       Permission.nearbyWifiDevices,
     ].request();
     
+    if (!mounted) return;
     _startAdvertising();
     _startDiscovery();
   }
@@ -61,6 +62,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
         strategy,
         onConnectionInitiated: _onConnectionInit,
         onConnectionResult: (id, status) {
+          if (!mounted) return;
           if (status == Status.CONNECTED) {
             setState(() {
               connectedDevices[id] = discoveredDevices[id] ?? 'Unknown Device';
@@ -68,14 +70,17 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
           }
         },
         onDisconnected: (id) {
+          if (!mounted) return;
           setState(() {
             connectedDevices.remove(id);
           });
         },
       );
-      setState(() {
-        isAdvertising = a;
-      });
+      if (mounted) {
+        setState(() {
+          isAdvertising = a;
+        });
+      }
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -87,6 +92,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
         userName,
         strategy,
         onEndpointFound: (id, name, serviceId) {
+          if (!mounted) return;
           setState(() {
             discoveredDevices[id] = name;
           });
@@ -96,6 +102,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
             id,
             onConnectionInitiated: _onConnectionInit,
             onConnectionResult: (id, status) {
+              if (!mounted) return;
               if (status == Status.CONNECTED) {
                 setState(() {
                   connectedDevices[id] = discoveredDevices[id] ?? 'Unknown';
@@ -103,6 +110,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
               }
             },
             onDisconnected: (id) {
+              if (!mounted) return;
               setState(() {
                 connectedDevices.remove(id);
               });
@@ -110,14 +118,17 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
           );
         },
         onEndpointLost: (id) {
+          if (!mounted) return;
           setState(() {
             discoveredDevices.remove(id);
           });
         },
       );
-      setState(() {
-        isDiscovering = a;
-      });
+      if (mounted) {
+        setState(() {
+          isDiscovering = a;
+        });
+      }
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -132,6 +143,7 @@ class _ActivityMeshChatScreenState extends State<ActivityMeshChatScreen> {
         onPayLoadRecieved: (endpointId, payload) {
           if (payload.type == PayloadType.BYTES) {
             String str = String.fromCharCodes(payload.bytes!);
+            if (!mounted) return;
             setState(() {
               messages.add(ChatMessage(
                 text: str,
